@@ -43,14 +43,9 @@
         </p>
         
         <div>
-                    <input type="file" name="file" id="image_to_upload" class="inputfile" />
+                    <input type="file" name="file" id="image_to_upload" class="inputfile" accept="image/*" />
                     <label for="image_to_upload">Escolha uma imagem...</label>
         </div>
-             <div>
-        
-                <h1 id="result" style="margin-right:20px; margin-top:300px;float:left;"><span> </span></h1>
-        
-            </div>
         
     </div>
 </div>
@@ -80,12 +75,16 @@
                       document.getElementById("resultado").innerHTML = aux + " % de probabilidade :("; 
                       document.getElementById("resultado").style.color = 'red';
                       document.getElementById("resultado").fontWeight = 'bold';
+                      //refresh no Formdata caso seja feita mais de uma requisição
+                      formdata = new FormData();
                       //red 
                   }
                   else {
                       document.getElementById("resultado").innerHTML = aux + " % de probabilidade :)";
                       document.getElementById("resultado").style.color = 'green';
                       document.getElementById("resultado").fontWeight = 'bold';
+                      //refresh no Formdata caso seja feita mais de uma requisição
+                      formdata = new FormData();
                       //green
                   }
                   
