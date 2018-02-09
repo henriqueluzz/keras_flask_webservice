@@ -31,7 +31,7 @@
 
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">Your Site</a>
+        <a class="pure-menu-heading" id = 'resultado'></a>
     </div>
 </div>
 
@@ -57,7 +57,7 @@
     <div class="footer l-box is-center">Developed by <a href = "https://www.linkedin.com/in/henriqueluzz/">@henriqueluzz</a> with purecss.io
         
     </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     jQuery.noConflict();    
     formdata = new FormData();
@@ -74,8 +74,8 @@
                 processData: false,
                 contentType: false,
                 success:function(response){
-                  
-                  document.getElementById("result").innerHTML = response;
+                  aux = response.slice(0,4)
+                  document.getElementById("resultado").innerHTML = aux;
                 }
             });
         }                       
