@@ -75,7 +75,20 @@
                 contentType: false,
                 success:function(response){
                   aux = response.slice(0,4)
-                  document.getElementById("resultado").innerHTML = aux;
+                  if (Number(aux) <= 0.5) {
+
+                      document.getElementById("resultado").innerHTML = aux + " % de probabilidade :("; 
+                      document.getElementById("resultado").style.color = 'red';
+                      document.getElementById("resultado").fontWeight = 'bold';
+                      //red 
+                  }
+                  else {
+                      document.getElementById("resultado").innerHTML = aux + " % de probabilidade :)";
+                      document.getElementById("resultado").style.color = 'green';
+                      document.getElementById("resultado").fontWeight = 'bold';
+                      //green
+                  }
+                  
                 }
             });
         }                       
