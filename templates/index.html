@@ -32,6 +32,8 @@
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <a class="pure-menu-heading" id = 'resultado'></a>
+        <br>
+        <a class="pure-menu-heading" id = 'resultado2'></a>
     </div>
 </div>
 
@@ -69,20 +71,32 @@
                 processData: false,
                 contentType: false,
                 success:function(response){
-                  aux = response.slice(0,4)
-                  if (Number(aux) <= 0.5) {
+                  
+                  miojo_prob = Number(response.slice(0,4)) // miojo
+                  ed_prob = Number(response.slice(5,9)) // ed sheeran
 
-                      document.getElementById("resultado").innerHTML = aux + " % de probabilidade :("; 
+                  if (miojo_prob <= 0.5) {
+
+                      document.getElementById("resultado").innerHTML = miojo_prob*100 + " % de ser o Miojo"; 
                       document.getElementById("resultado").style.color = 'red';
-                      document.getElementById("resultado").fontWeight = 'bold';
+                      document.getElementById("resultado").style.fontWeight = 'bold';
+
+                      document.getElementById("resultado2").innerHTML = ed_prob*100 + " % de ser o Ed Sheeran"; 
+                      document.getElementById("resultado2").style.color = 'green';
+                      document.getElementById("resultado2").style.fontWeight = 'bold';
                       //refresh no Formdata caso seja feita mais de uma requisição
                       formdata = new FormData();
-                      //red 
+                      
                   }
                   else {
-                      document.getElementById("resultado").innerHTML = aux + " % de probabilidade :)";
+
+                      document.getElementById("resultado").innerHTML = miojo_prob*100 + " % de ser o Miojo";
                       document.getElementById("resultado").style.color = 'green';
-                      document.getElementById("resultado").fontWeight = 'bold';
+                      document.getElementById("resultado").style.fontWeight = 'bold';
+
+                      document.getElementById("resultado2").innerHTML = ed_prob*100 + " % de ser o Ed Sheeran";
+                      document.getElementById("resultado2").style.color = 'red';
+                      document.getElementById("resultado2").style.fontWeight = 'bold';
                       //refresh no Formdata caso seja feita mais de uma requisição
                       formdata = new FormData();
                       //green

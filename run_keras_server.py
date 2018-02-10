@@ -51,7 +51,6 @@ def homepage():
 def predict():
     # initialize the data dictionary that will be returned from the
     # view
-    data = {"success": False}
     # ensure an image was properly uploaded to our endpoint
     if flask.request.method == "POST":
         if flask.request.files.get("image"):
@@ -61,24 +60,12 @@ def predict():
             
             image = prepare_image(img, target = (150, 150))
             preds = model.predict(image).tolist()
-            
-            data["predictions"] = []
 
-            # loop over the results and add them to the list of
-            # returned predictions
-            r = {"label": 'ed', "probability": float(preds[0][0])}
-            r2 = {"label": 'miojo', "probability": float(preds[0][1])}
+            miojo_prob = str(float(preds[0][1]))[0:4]
+            ed_prob = str(float(preds[0][0]))[0:4]
 
-            data["predictions"].append(r)
-            data["predictions"].append(r2)
+            out = miojo_prob + " " + ed_prob
 
-            # indicate that the request was a success
-            data["success"] = True
-
-            out = str(float(preds[0][1]))
-
-
-    # return the data dictionary as a JSON response
     #return flask.jsonify(data['predictions'])
     return out
 
